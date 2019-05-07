@@ -50,5 +50,30 @@ If you want to use another Kubernetes Cluster, then you can pass the `-kubeconfi
 go run internal/main.go -kubeconfig <path-to-kubeconfig>
 ```
 
+This will output something similar to the following:
+
+```bash
+....
+
+my-api-key
+{
+  "apikey": "ABCDEFGHIJKLMNOP"
+}
+
+my-login-information
+{
+  "password": "p4ssw0rd1",
+  "username": "admin"
+}
+```
+
 **Note:** You may need additional setup depending on your cloud provider. For example
 extra [authentication](https://github.com/kubernetes/client-go/tree/master/plugin/pkg/client/auth) to the clusters.
+
+## Unit Tests
+
+You can run the Unit-Tests by running:
+
+```bash
+go test ./...
+```
