@@ -32,16 +32,19 @@ func main() {
 		log.Fatalf("Error Using Current Context: %v", err)
 	}
 
-	// Create the clientset
+	// Create the 'real' clientset
+	// as seen in https://github.com/kubernetes/client-go/blob/master/kubernetes/clientset.go
 	clientset, err := kubernetes.NewForConfig(config)
 	if err != nil {
 		log.Fatalf("Error Creating the Client: %v", err)
 	}
 
+	// Get Secrets from the 'default' namespace, and print them nicely
 	secretMap := secrets.GetSecrets(clientset, "default")
 	prettifyOutput(secretMap)
 }
 
+// homeDir just returns the home directory
 func homeDir() string {
 	if h := os.Getenv("HOME"); h != "" {
 		return h
@@ -58,6 +61,6 @@ func prettifyOutput(secretMap map[string]map[string]string) {
 		if err != nil {
 			log.Fatalf("Error Marshalling: %v", err)
 		}
-		fmt.Print(string(b))
+		fmt.Printf("%s\n\n", string(b))
 	}
 }

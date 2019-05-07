@@ -15,9 +15,10 @@ following command:
 dep ensure
 ```
 
-**Note:** These dependancies were generated for Kubernetes version 1.14. You may need different dependancies depending on your Kubernetes version.
+**Note:** These dependancies were generated for Kubernetes version 1.14. The code may
+only work with that Kubernetes version.
 
-## Setting Up Minikube
+## Setting Up Minikube and Secrets
 
 You can install [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube) and then run:
 
@@ -27,9 +28,17 @@ minikube start
 
 This will generate a config in `$HOME/.kube/config`.
 
+Now we can generate a few secrets to test it out:
+
+```bash
+kubectl create secret generic my-login-information --from-literal=username=us3r1 --from-literal=password=p4ssw0rd2
+
+kubectl create secret generic my-api-key --from-literal=apikey=ABCDEFGHIJKLMNOP
+```
+
 ## Usage
 
-Once the dependancies have been installed, simply run:
+Once the dependancies have been installed, and minikube has been setup, you can simply run:
 
 ```bash
 go run internal/main.go
