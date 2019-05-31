@@ -4,6 +4,8 @@ This repository houses an example of how to use Go-Client, and more specifically
 
 This repository is meant to go along with the [Fake it Until You Make it: Unit Tests with Go-Client Fake Client](https://sched.co/MPgE) Presentation for KubeCon Europe 2019.
 
+You can also follow along with the recorded session on [youtube](https://youtu.be/reDCJYbxtRg).
+
 ## Pre-Requisites
 
 In order to run this application, you must first install a couple of dependancies.
